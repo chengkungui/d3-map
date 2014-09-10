@@ -3,63 +3,71 @@
   <meta charset="utf-8">
   <style>
 
-  /* CSS goes here. */
-
+  .state.victoria { fill: #ddc; }
+  .state.queensland { fill: #cdd; }
+  .state.new-south-wales { fill: #cdc; }
+  .state.south-australia { fill: #dcd; }
+  .state.australian-capital-territory { fill: #dcd; }
+  .state.western-australia { fill: #ddc; }
+  .state.northern-territory { fill: #ccd; }
+  .state.tasmania { fill: #ccd; }
   </style>
 </head>
 <body>
-  <script src="//cdnjs.cloudflare.com/ajax/libs/d3/3.4.11/d3.min.js"></script>
-  <script src="//cdnjs.cloudflare.com/ajax/libs/topojson/1.1.0/topojson.min.js"></script>
-  <script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/d3/3.4.11/d3.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/topojson/1.1.0/topojson.min.js"></script>
+<script>
 
-  /* JavaScript goes here. */
+/* JavaScript goes here. */
 
-  var width = 960,
-    height = 1200;
+var width = 960,
+height = 960;
 
-  var svg = d3.select('body').append('svg')
-    .attr({"width": width, "height": height});
+var svg = d3.select('body').append('svg')
+.attr({"width": width, "height": height});
 
-  d3.json('au.json', function(error, au) {
-    if (error) return console.error(error);
-    console.log(au);
+d3.json('states_au.json', function(error, au) {
+  if (error) return console.error(error);
+  // console.log(world);
 
-    var subunits = topojson.feature(au, au.objects.subunits);
+  var states = topojson.feature(au, au.objects.states);
 
-    // var projection = d3.geo.mercator()
-    // .scale(800)
-    // .translate([-950, 50]);
+  // var projection = d3.geo.mercator()
+  // .scale(800)
+  // .translate([-950, 50]);
 
-    var projection = d3.geo.albers()
-    .rotate([-130, 0])
-    .center([0, -28])
-    .parallels([-15, -60])
-    .scale(1000)
-    .translate([width / 2, height / 2])
-    .precision(.1);
-    // .rotate([-23.4, 0]);
-    // .parallels([50, 60])
-    // .scale(6000)
-    // .translate([width / 2, height / 2]);
+  var projection = d3.geo.albers()
+  .rotate([-133, 0])
+  .center([0, -28])
+  .parallels([-10, -45])
+  .scale(1400)
+  .translate([width / 2, height / 2])
+  .precision(.1);
 
-    // var projection = d3.geo.albers()
-    // .rotate([96, 0])
-    // .center([-.6, 38.7])
-    // .parallels([29.5, 45.5])
-    // .scale(1070)
-    // .translate([width / 2, height / 2])
-    // .precision(.1);
+  var path = d3.geo.path()
+  .projection(projection);
 
-    var path = d3.geo.path()
-    .projection(projection);
+  svg.selectAll(".state")
+  .data(states.features)
+  .enter().append("path")
+  .attr("class", function(d) { return "state " + d.id.toLowerCase().replace(/\s+/g,'-'); })
+  .attr("d", path);
 
-    svg.append("path")
-      .datum(subunits)
-      .attr("d", path);
-  });
+  svg.selectAll(".state-label")
+    .data(topojson.feature(au, au.objects.states).features)
+  .enter().append("text")
+    .attr("class", function(d) { return "state-label " + d.id.toLowerCase().replace(/\s+/g,'-'); })
+    .attr("transform", function(d) {
+      var center = path.centroid(d);
+      console.log(center);
+      console.log(center.prototype);
+      return "translate(" + (center[0] - 30) + "," + center[1] + ")"; })
+    .attr("dy", ".35em")
+    .text(function(d) { return d.id; });
+});
 
 
 
 
-  </script>
+</script>
 </body>
