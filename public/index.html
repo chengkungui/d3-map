@@ -15,7 +15,7 @@
   /* JavaScript goes here. */
 
   var width = 960,
-    height = 1160;
+    height = 1200;
 
   var svg = d3.select('body').append('svg')
     .attr({"width": width, "height": height});
@@ -26,9 +26,29 @@
 
     var subunits = topojson.feature(au, au.objects.subunits);
 
-    var projection = d3.geo.mercator()
-    .scale(500)
-    .translate([width / 2, height / 2]);
+    // var projection = d3.geo.mercator()
+    // .scale(800)
+    // .translate([-950, 50]);
+
+    var projection = d3.geo.albers()
+    .rotate([-130, 0])
+    .center([0, -28])
+    .parallels([-15, -60])
+    .scale(1000)
+    .translate([width / 2, height / 2])
+    .precision(.1);
+    // .rotate([-23.4, 0]);
+    // .parallels([50, 60])
+    // .scale(6000)
+    // .translate([width / 2, height / 2]);
+
+    // var projection = d3.geo.albers()
+    // .rotate([96, 0])
+    // .center([-.6, 38.7])
+    // .parallels([29.5, 45.5])
+    // .scale(1070)
+    // .translate([width / 2, height / 2])
+    // .precision(.1);
 
     var path = d3.geo.path()
     .projection(projection);
