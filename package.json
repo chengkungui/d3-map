@@ -4,7 +4,6 @@
   "description": "Show a Australian map with d3 library",
   "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node server.js"
   },
   "repository": {
