@@ -1,0 +1,117 @@
+[
+  {
+    "country": "AUS",
+    "name": "Melbourne",
+    "weight": "50",
+    "ho_users": "220",
+    "pos_tills": "240"
+  },
+  {
+    "country": "AUS",
+    "name": "Sydney",
+    "weight": "50",
+    "ho_users": "300",
+    "pos_tills": "230"
+  },
+  {
+    "country": "AUS",
+    "name": "Brisbane",
+    "weight": "30",
+    "ho_users": "180",
+    "pos_tills": "150"
+  },
+  {
+    "country": "AUS",
+    "name": "Adelaide",
+    "weight": "20",
+    "ho_users": "40",
+    "pos_tills": "80"
+  },
+  {
+    "country": "AUS",
+    "name": "Perth",
+    "weight": "20",
+    "ho_users": "10",
+    "pos_tills": "60"
+  },
+  {
+    "country": "NZL",
+    "name": "Christchurch",
+    "weight": "20",
+    "ho_users": "34",
+    "pos_tills": "25"
+  },
+  {
+    "country": "NZL",
+    "name": "Auckland",
+    "weight": "20",
+    "ho_users": "33",
+    "pos_tills": "46"
+  },
+  {
+    "country": "THA",
+    "name": "Bangkok",
+    "weight": "30",
+    "ho_users": "90",
+    "pos_tills": "300"
+  },
+  {
+    "country": "MYS",
+    "name": "Kuala Lumpur",
+    "weight": "20",
+    "ho_users": "15",
+    "pos_tills": "30"
+  },
+  {
+    "country": "SGP",
+    "name": "Singapore",
+    "weight": "10",
+    "ho_users": "5",
+    "pos_tills": "8"
+  },
+  {
+    "country": "USA",
+    "name": "New York",
+    "weight": "10",
+    "ho_users": "5",
+    "pos_tills": "8"
+  },
+  {
+    "country": "USA",
+    "name": "New York",
+    "weight": "10",
+    "ho_users": "5",
+    "pos_tills": "8"
+  },
+  {
+    "country": "USA",
+    "name": "Los Angeles",
+    "weight": "10",
+    "ho_users": "5",
+    "pos_tills": "8"
+  },
+  {
+    "country": "FRA",
+    "name": "Paris",
+    "weight": "10",
+    "ho_users": "5"
+  },
+  {
+    "country": "GBR",
+    "name": "London",
+    "weight": "10",
+    "ho_users": "5"
+  },
+  {
+    "country": "DEU",
+    "name": "Hamburg",
+    "weight": "10",
+    "ho_users": "5"
+  },
+  {
+    "country": "CHE",
+    "name": "Geneva",
+    "weight": "10",
+    "ho_users": "5"
+  }
+]

@@ -11,19 +11,52 @@
   .state.western-australia { fill: #ddc; }
   .state.northern-territory { fill: #ccd; }
   .state.tasmania { fill: #ccd; }
+
+  path.country {
+  /*stroke: white;
+  stroke-width: 0.25px;*/
+  fill: grey;
+}
+.border {
+fill: none;
+stroke: #fff;
+stroke-linejoin: round;
+stroke-linecap: round;
+stroke-width: 0.25px;
+}
+
+.place {
+  fill: steelblue;
+  fill-opacity: .8;
+  stroke: black;
+  stroke-width: 0.25px;
+}
+/*path {
+  fill: none;
+  stroke: #000;
+  stroke-linejoin: round;
+  stroke-linecap: round;
+}*/
+div.tooltip {
+  position: absolute;
+  text-align: center;
+  width: 120px;
+  height: 50px;
+  padding: 2px;
+  font: 12px sans-serif;
+  background: lightsteelblue;
+  border: 0px;
+  border-radius: 8px;
+  pointer-events: none;
+}
+
+
   </style>
 </head>
 <body>
-<script src="//cdnjs.cloudflare.com/ajax/libs/d3/3.4.11/d3.min.js"></script>
-<script src="//cdnjs.cloudflare.com/ajax/libs/topojson/1.1.0/topojson.min.js"></script>
-<!-- // <script src="/au.js"> -->
-<script src="/world.js">
-/* JavaScript goes here. */
+  <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/d3/3.4.11/d3.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/topojson/1.1.0/topojson.min.js"></script>
 
-
-
-
-
-
-</script>
+  <script src="/world.js"></script>
 </body>
