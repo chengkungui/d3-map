@@ -2,12 +2,17 @@
   "name": "d3-map",
   "version": "1.0.0",
   "description": "Show a Australian map with d3 library",
-  "main": "index.js",
+  "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/chengkungui/d3-map"
+  },
   "author": "ChengkunGui",
   "license": "ISC",
+  "homepage": "https://github.com/chengkungui/d3-map",
   "dependencies": {
     "express": "^4.9.0"
   }

@@ -5,3 +5,5 @@ build/Release
 **/.idea
 
 **/.DS_Store
+
+*.log
