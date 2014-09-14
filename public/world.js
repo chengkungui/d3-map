@@ -23,7 +23,7 @@ var svg = d3.select("body").append("svg")
 svg.append("rect")
 .attr("width", "100%")
 .attr("height", "100%")
-.attr("fill", "#E6F6FF");
+.attr("fill", "#B2D0FE");
 
 var radius = d3.scale.sqrt()
     .domain([0, 50])
@@ -34,6 +34,7 @@ var div = d3.select("body").append("div")
     .style("opacity", 0);
 
 var g = svg.append("g");
+
 
 d3.json("/world_50m.json", function(error, world) {
   if (error){
@@ -47,6 +48,14 @@ d3.json("/world_50m.json", function(error, world) {
   .enter().append("path")
   .attr("d", path)
   .attr("class", "country");
+
+  // g.selectAll(".country-label")
+  //   .data(countries.features)
+  // .enter().append("text")
+  //   .attr("class", function(d) { return "country-label"; })
+  //   .attr("transform", function(d) { return "translate(" + path.centroid(d) + ")"; })
+  //   .attr("dy", ".25em")
+  //   .text(function(d) { return d.id; });
 
   var mesh = topojson.mesh(world, world.objects.countries, function(a, b) { return a !== b; });
 
@@ -135,13 +144,39 @@ d3.json("/world_50m.json", function(error, world) {
       else{
         g.attr("transform","translate("+
         d3.event.translate.join(",")+")scale("+d3.event.scale+")");
+
+        g.selectAll(".place")
+        .attr("d", path.pointRadius(function(d) {
+          if (d.geometry && d.geometry.type == 'Point'){
+            return radius(d.properties.weight)/d3.event.scale;
+          }
+          else
+            console.log(d);
+        }));
+
+        // g.selectAll(".country-label")
+        //   .attr("transform", function(d) { return "translate(" + path.centroid(d) + ") scale("+1/d3.event.scale+")"; })
       }
     }
     else{
       g.attr('transform', null);
       zoom.translate([0, 0]);
       zoom.scale(1);
+      g.selectAll(".place")
+      .attr("d", path.pointRadius(function(d) {
+        if (d.geometry && d.geometry.type == 'Point'){
+          return radius(d.properties.weight);
+        }
+        else
+          console.log(d);
+      }));
+
+      // g.selectAll(".country-label")
+      //   .attr("transform", function(d) { return "translate(" + path.centroid(d) + ")"; })
+
     }
+
+
 
   });
 
