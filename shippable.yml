@@ -1,0 +1,11 @@
+language: node_js
+
+node_js:
+  - 0.10.26
+
+env:
+  global:
+    - APP_NAME=d3map
+
+after_success :
+  - git push -f git@heroku.com:$APP_NAME.git master
