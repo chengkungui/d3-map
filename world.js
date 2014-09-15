@@ -16,7 +16,7 @@ var path = d3.geo.path()
 .projection(projection);
 
 
-var svg = d3.select("body").append("svg")
+var svg = d3.select("#main_content").append("svg")
 .attr("width", width)
 .attr("height", height);
 
@@ -29,11 +29,12 @@ var radius = d3.scale.sqrt()
     .domain([0, 50])
     .range([0, 10]);
 
-var div = d3.select("body").append("div")
+var g = svg.append("g");
+
+var tooltipdiv = d3.select("#main_content").append("div")
     .attr("class", "tooltip")
     .style("opacity", 0);
 
-var g = svg.append("g");
 
 
 d3.json("./world_50m.json", function(error, world) {
@@ -111,19 +112,19 @@ d3.json("./world_50m.json", function(error, world) {
           console.log(d);
       }))
       .on("mouseover", function(d) {
-            div.transition()
+            tooltipdiv.transition()
                 .duration(200)
                 .style("opacity", .9);
             var tip =  d.properties.ho_users + ' head office user';
             if (d.properties.pos_tills)
               tip = tip + ' and ' +d.properties.pos_tills+ ' POS tills';
 
-            div .html(d.properties.place + '</br>' + tip)
-                .style("left", (d3.event.pageX) + "px")
-                .style("top", (d3.event.pageY - 28) + "px");
+            tooltipdiv.html(d.properties.place + '</br>' + tip)
+                .style("left", (d3.event.pageX - 220) + "px")
+                .style("top", (d3.event.pageY - 200) + "px");
             })
         .on("mouseout", function(d) {
-            div.transition()
+            tooltipdiv.transition()
                 .duration(500)
                 .style("opacity", 0);
         });
