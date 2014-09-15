@@ -36,7 +36,7 @@ var div = d3.select("body").append("div")
 var g = svg.append("g");
 
 
-d3.json("/world_50m.json", function(error, world) {
+d3.json("./world_50m.json", function(error, world) {
   if (error){
     console.log(error);
     return;
@@ -65,7 +65,7 @@ d3.json("/world_50m.json", function(error, world) {
   .attr("d", path);
 
 
-  d3.json('/customer_location.json', function(error, locations){
+  d3.json('./customer_location.json', function(error, locations){
     if (error){
       console.log(error);
       return;
